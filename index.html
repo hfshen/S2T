@@ -2,15 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speech Recognition Chatbot</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>음성 인식 챗봇</title>
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <button id="startBtn">Request Permission</button>
-        <div id="chatWindow" class="chat-window"></div>
-    </div>
-    <script src="app.js"></script>
+    <!-- 여기에 단계별로 코드를 추가합니다. -->
+    <button id="requestPermission">권한 요청</button>
+    <script>
+        document.getElementById("requestPermission").addEventListener("click", async () => {
+            try {
+                await navigator.mediaDevices.getUserMedia({ audio: true });
+                alert("마이크 권한이 승인되었습니다.");
+            } catch (err) {
+                alert("마이크 권한이 거부되었습니다.");
+            }
+        });
+    </script>
+<button id="startRecognition">음성 인식 시작</button>
+<script>
+    document.getElementById("startRecognition").addEventListener("click", () => {
+        startRecognition();
+    });
+</script>
+<div id="recognitionResult"></div>
+    
 </body>
 </html>

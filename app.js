@@ -86,3 +86,9 @@ recognition.addEventListener("result", async (event) => {
     recognition.start();
     // ... 이전 코드 ...
 });
+
+function addMessage(text, sender) {
+    const message = document.createElement("p");
+    message.textContent = `[${sender}] ${text}`;
+    document.getElementById("recognitionResult").appendChild(message);
+}
